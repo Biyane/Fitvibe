@@ -1,3 +1,11 @@
 <resources>
+    //launch
     <string name="app_name">Fitvibe</string>
+    <string name="launch_activity_registration">регистрация</string>
+    <string name="launch_activity_skip">пропустить</string>
+
+    //registration
+    <string name="sms_fragment_button_text">Получить код в SMS</string>
+    <string name="sms_fragment_phone_hint">Номер телефона</string>
+    <string name="sms_code_fragment_time_text">Получить новый код можно через %d</string>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".registration.presentation.SmsCodeFragment">
+
+    <TextView
+        android:id="@+id/insert_sms_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/helvetica_medium"
+        android:text="Введите код из SMS"
+        android:textColor="@color/nevada"
+        android:textSize="24sp" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/sms_digit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        android:inputType="number"
+        android:itemBackground="@color/gray_50"
+        app:itemCount="4"
+        app:itemHeight="50dp"
+        app:itemRadius="10dp"
+        app:itemSpacing="16dp"
+        app:itemWidth="56dp" />
+
+    <TextView
+        android:id="@+id/phone_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/nevada"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        tools:text="Код выслан на +7 707 777 77 77"/>
+
+    <TextView
+        android:id="@+id/sms_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/nevada"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        tools:text="Получить новый код можно через 01:05"/>
+
+</LinearLayout>

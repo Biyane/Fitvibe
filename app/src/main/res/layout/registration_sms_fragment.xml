@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".registration.presentation.RegistrationSmsFragment">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="123dp"
+        android:fontFamily="@font/mohave"
+        android:text="@string/app_name"
+        android:textColor="@color/nevada"
+        android:textSize="64sp" />
+
+    <EditText
+        android:id="@+id/phone_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
+        android:inputType="phone"
+        android:hint="@string/sms_fragment_phone_hint"
+        android:autofillHints="phone"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:background="@drawable/bg_gray_rounded_10" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sms_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_green_rounded_30"
+        android:layout_marginTop="28dp"
+        android:text="@string/sms_fragment_button_text"
+        android:textColor="@color/white"
+        android:fontFamily="@font/helvetica_medium"
+        android:layout_marginHorizontal="40dp"/>
+
+
+
+</LinearLayout>
