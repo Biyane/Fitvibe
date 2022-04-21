@@ -51,6 +51,7 @@ dependencies {
     //ui
     implementation "ru.tinkoff.decoro:decoro:${rootProject.ext.decoraLatestVersion}"
     implementation "io.github.chaosleung:pinview:${rootProject.ext.pinViewLatestVersion}"
+    implementation "androidx.fragment:fragment-ktx:${rootProject.ext.latestFragmentVersion}"
 
     //Timber
     implementation "com.jakewharton.timber:timber:${rootProject.ext.timberLatestVersion}"

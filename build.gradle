@@ -13,4 +13,5 @@ ext {
     decoraLatestVersion = "1.3.5"
     pinViewLatestVersion = "1.4.4"
     timberLatestVersion = "5.0.1"
+    latestFragmentVersion = "1.4.1"
 }
