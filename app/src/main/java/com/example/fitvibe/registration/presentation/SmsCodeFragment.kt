@@ -1,19 +1,20 @@
 package com.example.fitvibe.registration.presentation
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.example.fitvibe.base.presentation.MainActivity
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.SmsCodeFragmentBinding
 import com.example.fitvibe.registration.presentation.viewmodel.SmsCodeViewModel
-import timber.log.Timber
 
 class SmsCodeFragment : Fragment() {
 
-    private lateinit var viewModel: SmsCodeViewModel
+    private val viewModel: SmsCodeViewModel by viewModels()
     private lateinit var phoneString: String
 
     private var _binding: SmsCodeFragmentBinding? = null
@@ -35,6 +36,8 @@ class SmsCodeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        initObservers()
+        setFakeAccessVerification()
     }
 
     override fun onDestroyView() {
@@ -48,6 +51,21 @@ class SmsCodeFragment : Fragment() {
         }
     }
 
+    private fun initObservers() {
+        viewModel.tickStringLiveData.observe(viewLifecycleOwner, ::handleTimerTick)
+    }
+
+    private fun setFakeAccessVerification() {
+        binding.insertSmsTextView.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+    }
+
+    private fun handleTimerTick(tick: String) {
+        binding.smsTimeText.text = getString(R.string.sms_code_fragment_time_text, tick)
+    }
 
 
     companion object {

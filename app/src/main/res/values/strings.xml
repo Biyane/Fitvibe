@@ -7,5 +7,11 @@
     //registration
     <string name="sms_fragment_button_text">Получить код в SMS</string>
     <string name="sms_fragment_phone_hint">Номер телефона</string>
-    <string name="sms_code_fragment_time_text">Получить новый код можно через %d</string>
+    <string name="sms_code_fragment_time_text">Получить новый код можно через %s</string>
+    
+    //MainActivity
+    <string name="main_text">Главная</string>
+    <string name="calendar_text">Календарь</string>
+    <string name="search_text">Поиск</string>
+    <string name="profile_text">Профиль</string>
 </resources>
