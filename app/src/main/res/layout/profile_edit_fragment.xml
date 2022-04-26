@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/profile_photo_view"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="72dp"
+        android:src="@drawable/ic_profile_png"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/change_profile_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/bg_gray_77_rounded_10"
+        android:fontFamily="@font/helvetica_light"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:text="Сменить фото"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/profile_photo_view"
+        app:layout_constraintStart_toEndOf="@id/profile_photo_view"
+        app:layout_constraintTop_toTopOf="@id/profile_photo_view" />
+
+
+    <EditText
+        android:id="@+id/name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_gray_rounded_10_stroke"
+        android:hint="Имя"
+        android:paddingVertical="9dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_photo_view" />
+
+    <EditText
+        android:id="@+id/telephone_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_gray_rounded_10_stroke"
+        android:hint="Мобильный телефон"
+        android:paddingVertical="9dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_edit_text" />
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_gray_rounded_10_stroke"
+        android:hint="E-mail"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/telephone_edit_text" />
+
+    <EditText
+        android:id="@+id/birth_date_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_gray_rounded_10_stroke"
+        android:hint="Дана рождения"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:paddingVertical="9dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_edit_text" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_data_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

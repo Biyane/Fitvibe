@@ -14,4 +14,17 @@
     <string name="calendar_text">Календарь</string>
     <string name="search_text">Поиск</string>
     <string name="profile_text">Профиль</string>
+
+    //profile
+    <string name="profile_fragment_user_name_text">Имя пользователя</string>
+    <string name="profile_fragment_my_data_text">Мои данные</string>
+    <string name="profile_fragment_payment_method_text">Способы оплаты</string>
+    <string name="profile_fragment_my_bonus_text">Мои бонусы</string>
+    <string name="profile_fragment_train_history">История тренировок</string>
+    <string name="profile_fragment_information_text">Информация</string>
+    <string name="profile_fragment_support_service_text">Служба поддержки</string>
+    <string name="profile_fragment_about_us_text">О нас</string>
+    <string name="profile_fragment_leave_account">Выйти из аккаунта</string>
+
+
 </resources>
