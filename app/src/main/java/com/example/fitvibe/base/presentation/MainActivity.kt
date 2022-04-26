@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 if (isSelectedTabSame(currentFragment, newFragment)) return
                 show(newFragment)
             }
+            setReorderingAllowed(true)
         }
     }
 
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleFirstEntry(tab: BottomNavigationTab) {
         supportFragmentManager.commitNow {
             add(R.id.fragment_container,tab.getFragment(), tab.getTag())
+            setReorderingAllowed(true)
         }
     }
 
