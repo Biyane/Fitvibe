@@ -1,10 +1,13 @@
 package com.example.fitvibe.profile.presentation.view
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
@@ -29,9 +32,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-        setFragmentResultListener("request") { requestKey: String, bundle: Bundle ->  
-
-        }
+        initResultListener()
     }
 
     override fun onDestroyView() {
@@ -42,11 +43,38 @@ class ProfileFragment : Fragment() {
     private fun initListener() {
         binding.myDataTextView.setOnClickListener {
             parentFragmentManager.commit {
-                replace(R.id.fragment_container, ProfileEditFragment.newInstance(), ProfileEditFragment.TAG)
+                replace(
+                    R.id.fragment_container,
+                    ProfileEditFragment.newInstance(),
+                    ProfileEditFragment.TAG
+                )
                 setReorderingAllowed(true)
                 addToBackStack(ProfileEditFragment.TAG)
             }
         }
+    }
+
+    private fun initResultListener() {
+        setFragmentResultListener(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) { requestKey: String, bundle: Bundle ->
+            val decodedImage: String? = bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_IMAGE)
+            if (decodedImage != null) {
+                val image = decodeImage(decodedImage)
+                if (image != null) binding.profileEditImageView.setImageBitmap(image)
+            }
+            val name = bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_NAME)
+            if (name != null) {
+                binding.userNameTextView.text = name
+            }
+        }
+    }
+
+    private fun decodeImage(decodedImage: String): Bitmap? {
+        val bytes = Base64.decode(decodedImage, Base64.DEFAULT)
+        val imageBitmap: Bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        val emptyBitmap =
+            Bitmap.createBitmap(imageBitmap.width, imageBitmap.height, imageBitmap.config)
+        if (!imageBitmap.sameAs(emptyBitmap)) return imageBitmap
+        return null
     }
 
     companion object {

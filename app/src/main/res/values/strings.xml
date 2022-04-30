@@ -1,6 +1,6 @@
 <resources>
     //launch
-    <string name="app_name">Fitvibe</string>
+    <string name="app_name">2Coach</string>
     <string name="launch_activity_registration">регистрация</string>
     <string name="launch_activity_skip">пропустить</string>
 
@@ -25,6 +25,17 @@
     <string name="profile_fragment_support_service_text">Служба поддержки</string>
     <string name="profile_fragment_about_us_text">О нас</string>
     <string name="profile_fragment_leave_account">Выйти из аккаунта</string>
+        //profileEdit
+    <string name="profile_edit_fragment_change_photo_text">Сменить фото</string>
+    <string name="profile_edit_fragment_name_text">Имя</string>
+    <string name="profile_edit_fragment_mobile_tel_text">Мобильный телефон</string>
+    <string name="profile_edit_fragment_email_text">E-mail</string>
+    <string name="profile_edit_fragment_birth_date_text">Дата рождения</string>
+    <string name="profile_edit_fragment_sex_text">Пол:</string>
+    <string name="profile_edit_fragment_female_text">Женский</string>
+    <string name="profile_edit_fragment_male_text">Мужской</string>
+    <string name="profile_edit_fragment_save_data_text">Сохранить данные</string>
+    <string name="profile_edit_fragment_profile_image_content">profile image content</string>
 
 
 </resources>

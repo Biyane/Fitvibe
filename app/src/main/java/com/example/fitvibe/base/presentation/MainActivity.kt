@@ -2,15 +2,11 @@ package com.example.fitvibe.base.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.commitNow
 import com.example.fitvibe.R
 import com.example.fitvibe.base.presentation.types.BottomNavigationTab
-import com.example.fitvibe.base.presentation.types.BottomNavigationTab.Calendar.getFragment
 import com.example.fitvibe.databinding.ActivityMainBinding
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -44,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onTabSelected(tab: BottomNavigationTab) {
-        Timber.d("${supportFragmentManager.fragments}")
         val currentFragment: Fragment? = getCurrentFragment()
         val newFragment: Fragment? = supportFragmentManager.findFragmentByTag(tab.getTag())
         if (currentFragment == null) {

@@ -16,4 +16,5 @@
     <color name="gun_powder_color">#3D3D4F</color>
     <color name="gun_powder_color_70">#B33D3D4F</color>
     <color name="gray_77_color">#C4C4C4</color>
+    <color name="transparent">#00ffffff</color>
 </resources>
