@@ -1,19 +1,15 @@
 package com.example.fitvibe.calendar.presentation.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.fitvibe.R
 import com.example.fitvibe.calendar.presentation.viewmodel.CalendarViewModel
 
 class CalendarFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CalendarFragment()
-    }
 
     private lateinit var viewModel: CalendarViewModel
 
@@ -24,10 +20,13 @@ class CalendarFragment : Fragment() {
         return inflater.inflate(R.layout.calendar_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CalendarViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("hello", "CalendarFragmentDestroyed")
+    }
+
+    companion object {
+        fun newInstance() = CalendarFragment()
     }
 
 }

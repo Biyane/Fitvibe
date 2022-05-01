@@ -4,15 +4,18 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ProfileFragmentBinding
 import com.example.fitvibe.profile.presentation.viewmodel.ProfileViewModel
+import timber.log.Timber
 
 class ProfileFragment : Fragment() {
 
@@ -37,18 +40,20 @@ class ProfileFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Timber.d("OnDestroyView")
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("hello", "ProfileFragmentDestroyed")
     }
 
     private fun initListener() {
         binding.myDataTextView.setOnClickListener {
             parentFragmentManager.commit {
-                replace(
-                    R.id.fragment_container,
-                    ProfileEditFragment.newInstance(),
-                    ProfileEditFragment.TAG
-                )
                 setReorderingAllowed(true)
+                replace<ProfileEditFragment>(R.id.container)
                 addToBackStack(ProfileEditFragment.TAG)
             }
         }

@@ -3,7 +3,7 @@ package com.example.fitvibe.base.presentation.types
 import androidx.fragment.app.Fragment
 import com.example.fitvibe.calendar.presentation.view.CalendarFragment
 import com.example.fitvibe.main.presentation.view.MainFragment
-import com.example.fitvibe.profile.presentation.view.ProfileFragment
+import com.example.fitvibe.profile.presentation.view.ProfileContainerFragment
 import com.example.fitvibe.search.presentation.view.SearchFragment
 
 sealed class BottomNavigationTab {
@@ -45,7 +45,7 @@ sealed class BottomNavigationTab {
 
         override fun getTag(): String = PROFILE_TAG
 
-        override fun getFragment(): Fragment = ProfileFragment()
+        override fun getFragment(): Fragment = ProfileContainerFragment()
 
     }
 

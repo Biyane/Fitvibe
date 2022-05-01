@@ -1,11 +1,12 @@
 package com.example.fitvibe.main.presentation.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.fitvibe.R
 import com.example.fitvibe.main.presentation.viewmodel.MainViewModel
 
@@ -28,6 +29,11 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("hello", "MainFragmentDestroyed")
     }
 
 }

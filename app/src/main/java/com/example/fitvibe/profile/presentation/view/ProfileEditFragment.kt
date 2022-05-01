@@ -9,7 +9,6 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
@@ -18,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -112,10 +112,10 @@ class ProfileEditFragment : Fragment() {
     }
 
     private fun gatherEditedData(): Bundle {
-        val drawable = binding.profileEditImageView.drawable as BitmapDrawable
+        val bitmap = (binding.profileEditImageView.drawable).toBitmap()
         return bundleOf(
             PROFILE_EDIT_FRAGMENT_NAME to binding.nameEditText.text.toString(),
-            PROFILE_EDIT_FRAGMENT_IMAGE to getPhotoStringBase(drawable.bitmap)
+            PROFILE_EDIT_FRAGMENT_IMAGE to getPhotoStringBase(bitmap)
         )
     }
 

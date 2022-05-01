@@ -1,7 +1,7 @@
 package com.example.fitvibe.base.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import com.example.fitvibe.R
