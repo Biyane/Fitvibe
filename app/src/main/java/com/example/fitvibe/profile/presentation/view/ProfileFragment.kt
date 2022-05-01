@@ -61,7 +61,9 @@ class ProfileFragment : Fragment() {
 
     private fun initResultListener() {
         setFragmentResultListener(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) { requestKey: String, bundle: Bundle ->
-            val decodedImage: String? = bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_IMAGE)
+            if (requestKey != ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) return@setFragmentResultListener
+            val decodedImage: String? =
+                bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_IMAGE)
             if (decodedImage != null) {
                 val image = decodeImage(decodedImage)
                 if (image != null) binding.profileEditImageView.setImageBitmap(image)
