@@ -16,8 +16,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -52,6 +52,7 @@ class ProfileEditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         initViews()
+        initToolbar()
     }
 
     override fun onDestroyView() {
@@ -62,14 +63,21 @@ class ProfileEditFragment : Fragment() {
     private fun initListener() {
         saveButtonPressed()
         onChangePhotoClick()
+        onBackPressed()
+    }
+
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.popBackStack()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as? Bitmap
+            val imageBitmap = data?.extras?.get(CAMERA_DATA_FLAG) as? Bitmap
             if (imageBitmap != null) {
-                binding.profileEditImageView.setImageBitmap(imageBitmap)
+                binding.profileImageView.setImageBitmap(imageBitmap)
                 savePhotoInsideSharedPreference(imageBitmap)
             }
 
@@ -98,9 +106,13 @@ class ProfileEditFragment : Fragment() {
         val imageBitmap: Bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
         val emptyBitmap =
             Bitmap.createBitmap(imageBitmap.width, imageBitmap.height, imageBitmap.config)
-        if (!imageBitmap.sameAs(emptyBitmap)) binding.profileEditImageView.setImageBitmap(
+        if (!imageBitmap.sameAs(emptyBitmap)) binding.profileImageView.setImageBitmap(
             imageBitmap
         )
+    }
+
+    private fun initToolbar() {
+
     }
 
     private fun saveButtonPressed() {
@@ -111,13 +123,9 @@ class ProfileEditFragment : Fragment() {
         }
     }
 
-    private fun gatherEditedData(): Bundle {
-        val bitmap = (binding.profileEditImageView.drawable).toBitmap()
-        return bundleOf(
-            PROFILE_EDIT_FRAGMENT_NAME to binding.nameEditText.text.toString(),
-            PROFILE_EDIT_FRAGMENT_IMAGE to getPhotoStringBase(bitmap)
+    private fun gatherEditedData(): Bundle = bundleOf(
+            PROFILE_EDIT_FRAGMENT_NAME to binding.nameEditText.text.toString()
         )
-    }
 
     private fun onChangePhotoClick() {
         binding.changeProfilePhoto.setOnClickListener {
@@ -170,12 +178,12 @@ class ProfileEditFragment : Fragment() {
         const val TAG = "profile_edit_fragment"
         const val PROFILE_EDIT_FRAGMENT_FLAG = "profile_edit_fragment_flag"
         const val PROFILE_EDIT_FRAGMENT_NAME = "profile_edit_fragment_name"
-        const val PROFILE_EDIT_FRAGMENT_IMAGE = "profile_edit_fragment_image"
+        const val PROFILE_PHOTO_CODE_KEY = "profile_photo_code"
+
+        private const val CAMERA_DATA_FLAG = "data"
         private const val CAMERA_PERMISSION_CODE = 1000
         private const val REQUEST_IMAGE_CAPTURE = 1
-        private const val PROFILE_PHOTO_CODE_KEY = "profile_photo_code"
 
-        fun newInstance(): ProfileEditFragment = ProfileEditFragment()
     }
 
 }

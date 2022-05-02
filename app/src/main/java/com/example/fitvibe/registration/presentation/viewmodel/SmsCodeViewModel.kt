@@ -7,8 +7,7 @@ import com.example.fitvibe.registration.utils.TimerDelegateImpl
 
 class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
 
-    private var _tickLiveData: MutableLiveData<Int> = MutableLiveData(10)
-    val tickLiveData get() = _tickLiveData
+    private val tickLiveData: MutableLiveData<Int> = MutableLiveData(120)
 
     private var _tickStringLiveData: MutableLiveData<String> = MutableLiveData()
     val tickStringLiveData get() = _tickStringLiveData
@@ -18,7 +17,7 @@ class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
 
     init {
         startTimer(
-            time = _tickLiveData.value!!,
+            time = tickLiveData.value!!,
             delay = ONE_SECONDS_IN_MILLIS,
             onTick = { tick ->
                 handleTick(tick)
@@ -37,7 +36,7 @@ class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
     }
 
     private fun handleTick(tick: Int) {
-        _tickLiveData.value = tick
+        tickLiveData.value = tick
         updateTickString(tick)
     }
 

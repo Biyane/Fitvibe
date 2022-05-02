@@ -9,14 +9,15 @@ import com.example.fitvibe.base.presentation.types.BottomNavigationTab
 import com.example.fitvibe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         handleNavigation()
-        binding.bottomNav.selectedItemId = R.id.profile
+        initFirstEntrance()
     }
 
     private fun handleNavigation() {
@@ -37,6 +38,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    private fun initFirstEntrance() {
+        binding.bottomNav.selectedItemId = R.id.profile
     }
 
     private fun onTabSelected(tab: BottomNavigationTab) {
@@ -64,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleFirstEntry(tab: BottomNavigationTab) {
         supportFragmentManager.commitNow {
-            add(R.id.fragment_container,tab.getFragment(), tab.getTag())
+            add(R.id.fragment_container, tab.getFragment(), tab.getTag())
             setReorderingAllowed(true)
         }
     }

@@ -1,10 +1,11 @@
 package com.example.fitvibe.profile.presentation.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,6 @@ import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ProfileFragmentBinding
 import com.example.fitvibe.profile.presentation.viewmodel.ProfileViewModel
-import timber.log.Timber
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +23,13 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: ProfileViewModel
+
+    private lateinit var sharedPref: SharedPreferences
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,19 +41,18 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         initListener()
         initResultListener()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Timber.d("OnDestroyView")
         _binding = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("hello", "ProfileFragmentDestroyed")
+    private fun initViews() {
+        setProfileImage()
     }
 
     private fun initListener() {
@@ -62,16 +68,18 @@ class ProfileFragment : Fragment() {
     private fun initResultListener() {
         setFragmentResultListener(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) { requestKey: String, bundle: Bundle ->
             if (requestKey != ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) return@setFragmentResultListener
-            val decodedImage: String? =
-                bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_IMAGE)
-            if (decodedImage != null) {
-                val image = decodeImage(decodedImage)
-                if (image != null) binding.profileEditImageView.setImageBitmap(image)
-            }
             val name = bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_NAME)
-            if (name != null) {
-                binding.userNameTextView.text = name
-            }
+            if (!name.isNullOrBlank()) binding.userNameTextView.text = name
+        }
+    }
+
+
+    private fun setProfileImage() {
+        val encodedImage: String? =
+            sharedPref.getString(ProfileEditFragment.PROFILE_PHOTO_CODE_KEY, "")
+        if (!encodedImage.isNullOrBlank()) {
+            val image = decodeImage(encodedImage)
+            if (image != null) binding.profileImageView.setImageBitmap(image)
         }
     }
 
@@ -82,10 +90,6 @@ class ProfileFragment : Fragment() {
             Bitmap.createBitmap(imageBitmap.width, imageBitmap.height, imageBitmap.config)
         if (!imageBitmap.sameAs(emptyBitmap)) return imageBitmap
         return null
-    }
-
-    companion object {
-        fun newInstance() = ProfileFragment()
     }
 
 }

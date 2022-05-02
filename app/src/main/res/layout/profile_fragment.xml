@@ -7,33 +7,21 @@
     android:orientation="vertical"
     tools:context=".profile.presentation.view.ProfileFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/profile_edit_image_view_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_image_view"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="32dp"
-            android:elevation="0dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/profile_edit_image_view"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_profile_photo" />
-
-        </androidx.cardview.widget.CardView>
-
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/user_name_text_view"
@@ -45,9 +33,8 @@
             android:text="@string/profile_fragment_user_name_text"
             android:textColor="@color/gun_powder_color"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/profile_edit_image_view_container"
-            app:layout_constraintTop_toTopOf="@id/profile_edit_image_view_container" />
+            app:layout_constraintStart_toEndOf="@id/profile_image_view"
+            app:layout_constraintTop_toTopOf="@id/profile_image_view" />
 
         <TextView
             android:id="@+id/my_data_text_view"
