@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,6 @@ class ProfileEditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         initViews()
-        initToolbar()
     }
 
     override fun onDestroyView() {
@@ -68,6 +68,9 @@ class ProfileEditFragment : Fragment() {
 
     private fun onBackPressed() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.popBackStack()
+        }
+        binding.myToolbar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
     }
@@ -111,15 +114,20 @@ class ProfileEditFragment : Fragment() {
         )
     }
 
-    private fun initToolbar() {
-
-    }
-
     private fun saveButtonPressed() {
-        val bundle = gatherEditedData()
         binding.saveDataButton.setOnClickListener {
+            saveName()
+            val bundle = gatherEditedData()
             setFragmentResult(PROFILE_EDIT_FRAGMENT_FLAG, bundle)
             parentFragmentManager.popBackStack()
+        }
+    }
+
+
+    private fun saveName() {
+        with (sharedPref.edit()) {
+            putString(PROFILE_EDIT_FRAGMENT_NAME, binding.nameEditText.text.toString())
+            apply()
         }
     }
 

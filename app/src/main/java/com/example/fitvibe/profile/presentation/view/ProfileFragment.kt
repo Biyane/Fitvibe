@@ -15,14 +15,11 @@ import androidx.fragment.app.replace
 import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ProfileFragmentBinding
-import com.example.fitvibe.profile.presentation.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: ProfileFragmentBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var viewModel: ProfileViewModel
 
     private lateinit var sharedPref: SharedPreferences
 
@@ -53,6 +50,7 @@ class ProfileFragment : Fragment() {
 
     private fun initViews() {
         setProfileImage()
+        setUserName()
     }
 
     private fun initListener() {
@@ -66,8 +64,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initResultListener() {
-        setFragmentResultListener(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) { requestKey: String, bundle: Bundle ->
-            if (requestKey != ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) return@setFragmentResultListener
+        setFragmentResultListener(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_FLAG) { _: String, bundle: Bundle ->
             val name = bundle.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_NAME)
             if (!name.isNullOrBlank()) binding.userNameTextView.text = name
         }
@@ -90,6 +87,12 @@ class ProfileFragment : Fragment() {
             Bitmap.createBitmap(imageBitmap.width, imageBitmap.height, imageBitmap.config)
         if (!imageBitmap.sameAs(emptyBitmap)) return imageBitmap
         return null
+    }
+
+
+    private fun setUserName() {
+        val name = sharedPref.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_NAME, "")
+        if (!name.isNullOrBlank()) binding.userNameTextView.text = name
     }
 
 }
