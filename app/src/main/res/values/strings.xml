@@ -8,7 +8,7 @@
     <string name="sms_fragment_button_text">Получить код в SMS</string>
     <string name="sms_fragment_phone_hint">Номер телефона</string>
     <string name="sms_code_fragment_time_text">Получить новый код можно через %s</string>
-    
+
     //MainActivity
     <string name="main_text">Главная</string>
     <string name="calendar_text">Календарь</string>
@@ -25,7 +25,7 @@
     <string name="profile_fragment_support_service_text">Служба поддержки</string>
     <string name="profile_fragment_about_us_text">О нас</string>
     <string name="profile_fragment_leave_account">Выйти из аккаунта</string>
-        //profileEdit
+    //profileEdit
     <string name="profile_edit_fragment_change_photo_text">Сменить фото</string>
     <string name="profile_edit_fragment_name_text">Имя</string>
     <string name="profile_edit_fragment_mobile_tel_text">Мобильный телефон</string>
@@ -36,6 +36,8 @@
     <string name="profile_edit_fragment_male_text">Мужской</string>
     <string name="profile_edit_fragment_save_data_text">Сохранить данные</string>
     <string name="profile_edit_fragment_profile_image_content">profile image content</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

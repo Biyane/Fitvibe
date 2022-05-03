@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <TextView
+        android:id="@+id/greeting_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/oswald_regular"
+        android:textColor="@color/travertin_path_color"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Привет Кемел" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/greeting_name_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/greeting_name_text_view"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+    <TextView
+        android:id="@+id/train_completed_counter_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/oswald_regular"
+        android:textColor="@color/nevada_color"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@id/main_first_divider_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greeting_name_text_view"
+        tools:text="7" />
+
+    <TextView
+        android:id="@+id/train_completed_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/helvetica_regular"
+        android:text="тренеровок \n выполнено"
+        android:textColor="@color/nevada_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/train_completed_counter_text_view"
+        app:layout_constraintStart_toStartOf="@id/train_completed_counter_text_view"
+        app:layout_constraintTop_toBottomOf="@id/train_completed_counter_text_view" />
+
+    <View
+        android:id="@+id/main_first_divider_view"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="@color/travertin_path_color"
+        app:layout_constraintBottom_toBottomOf="@id/train_completed_text_view"
+        app:layout_constraintEnd_toStartOf="@id/train_hour_counter_text_view"
+        app:layout_constraintStart_toEndOf="@id/train_completed_counter_text_view"
+        app:layout_constraintTop_toTopOf="@id/train_completed_counter_text_view" />
+
+    <TextView
+        android:id="@+id/train_hour_counter_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/oswald_regular"
+        android:textColor="@color/nevada_color"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@id/main_second_divider_view"
+        app:layout_constraintStart_toEndOf="@id/main_first_divider_view"
+        app:layout_constraintTop_toBottomOf="@id/greeting_name_text_view"
+        tools:text="11" />
+
+    <TextView
+        android:id="@+id/train_hour_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/helvetica_regular"
+        android:gravity="center"
+        android:text="часов \n тренировок"
+        android:textColor="@color/nevada_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/train_hour_counter_text_view"
+        app:layout_constraintStart_toStartOf="@id/train_hour_counter_text_view"
+        app:layout_constraintTop_toBottomOf="@id/train_hour_counter_text_view" />
+
+    <View
+        android:id="@+id/main_second_divider_view"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="@color/travertin_path_color"
+        app:layout_constraintBottom_toBottomOf="@id/train_hour_text_view"
+        app:layout_constraintEnd_toStartOf="@id/train_ahead_counter_text_view"
+        app:layout_constraintStart_toEndOf="@id/train_hour_counter_text_view"
+        app:layout_constraintTop_toTopOf="@id/train_hour_counter_text_view" />
+
+    <TextView
+        android:id="@+id/train_ahead_counter_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/oswald_regular"
+        android:textColor="@color/nevada_color"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/main_second_divider_view"
+        app:layout_constraintTop_toBottomOf="@id/greeting_name_text_view"
+        tools:text="5" />
+
+    <TextView
+        android:id="@+id/train_ahead_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/helvetica_regular"
+        android:gravity="center"
+        android:text="впереди \n тренировок"
+        android:textColor="@color/nevada_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/train_ahead_counter_text_view"
+        app:layout_constraintStart_toStartOf="@id/train_ahead_counter_text_view"
+        app:layout_constraintTop_toBottomOf="@id/train_ahead_counter_text_view" />
+
+
+</merge>

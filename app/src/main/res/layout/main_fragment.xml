@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.presentation.view.MainFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello main fragment" />
+    <com.example.fitvibe.main.presentation.widgets.MainFragmentHeaderView
+        android:id="@+id/header_section_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-</FrameLayout>
+    <com.example.fitvibe.main.presentation.widgets.MainFragmentDiscountView
+        android:id="@+id/discount_section_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_section_view"
+        android:layout_marginTop="28dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fitness_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discount_section_view"/>
+
+    <TextView
+        android:id="@+id/popular_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fitness_recycler_view"
+        android:layout_marginStart="24dp"
+        android:text="Популярное"
+        android:fontFamily="@font/oswald_regular"
+        android:textSize="32sp"
+        android:textColor="@color/travertin_path_color"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
