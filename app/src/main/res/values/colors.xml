@@ -19,4 +19,5 @@
     <color name="transparent">#00ffffff</color>
     <color name="travertin_path_color">#B6AA91</color>
     <color name="amber_color">#F6C000</color>
+    <color name="black_50">#80000000</color>
 </resources>

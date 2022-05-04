@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.fitvibe.databinding.MainFragmentBinding
+import com.example.fitvibe.main.presentation.adapter.FitnessListAdapter
 
 class MainFragment : Fragment() {
 
@@ -23,7 +24,12 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
 
+    private fun initViews() {
+        val adapter = FitnessListAdapter()
+        binding.fitnessRecyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {

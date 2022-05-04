@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="@id/greeting_name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/greeting_name_text_view"
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+        app:shapeAppearanceOverlay="@style/circleImageViewRounded" />
 
     <TextView
         android:id="@+id/train_completed_counter_text_view"
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/oswald_regular"
+        android:text="7"
         android:textColor="@color/nevada_color"
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/main_first_divider_view"
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/oswald_regular"
+        android:text="11"
         android:textColor="@color/nevada_color"
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/main_second_divider_view"
@@ -105,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/oswald_regular"
+        android:text="5"
         android:textColor="@color/nevada_color"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
