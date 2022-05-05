@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".main.presentation.view.MainFragment">
 
-    <com.example.fitvibe.main.presentation.widgets.MainFragmentHeaderView
+    <include
         android:id="@+id/header_section_view"
+        layout="@layout/main_fragment_header_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.fitvibe.main.presentation.widgets.MainFragmentDiscountView
+    <include
         android:id="@+id/discount_section_view"
+        layout="@layout/main_fragment_discount_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"

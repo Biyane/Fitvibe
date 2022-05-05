@@ -3,7 +3,6 @@ package com.example.fitvibe.profile.presentation.view
 import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -12,7 +11,6 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +24,7 @@ import com.example.fitvibe.R
 import com.example.fitvibe.databinding.BottomSheetProfileEditBinding
 import com.example.fitvibe.databinding.ProfileEditFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
 
 class ProfileEditFragment : Fragment() {
@@ -33,12 +32,7 @@ class ProfileEditFragment : Fragment() {
     private var _binding: ProfileEditFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var sharedPref: SharedPreferences
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-    }
+    private val sharedPref: SharedPreferences by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,6 +1,5 @@
 package com.example.fitvibe.profile.presentation.view
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,18 +14,15 @@ import androidx.fragment.app.replace
 import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ProfileFragmentBinding
+import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment() {
 
     private var _binding: ProfileFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var sharedPref: SharedPreferences
+    private val sharedPref: SharedPreferences by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
