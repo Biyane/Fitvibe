@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import com.example.fitvibe.R
 import com.example.fitvibe.databinding.FragmentMainFitnessTrainerBinding
 import com.example.fitvibe.main.presentation.trainer.data.dayList
 import com.example.fitvibe.main.presentation.trainer.data.timeList
@@ -32,6 +36,13 @@ class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
         initToolbar()
         initViews()
         initAdapters()
+        initListeners()
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDayClick(value: String) {
@@ -43,7 +54,9 @@ class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
     }
 
     private fun initToolbar() {
-
+        binding.toolbar.setNavigationOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 
     private fun initViews() {
@@ -60,9 +73,21 @@ class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
         binding.timeRecyclerView.adapter = timeAdapter
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+    private fun initListeners() {
+        binding.imageContainerConstraint.setOnClickListener {
+            parentFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<MainFitnessTrainerDescriptionFragment>(
+                    R.id.fragment_main_container,
+                    MainFitnessTrainerDescriptionFragment.TAG
+                )
+                addToBackStack(MainFitnessTrainerDescriptionFragment.TAG)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.popBackStack()
+        }
     }
 
     companion object {
