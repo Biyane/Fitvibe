@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_image_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_profile_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/trainer_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/helvetica_medium"
+        android:text="Тренер 1"
+        android:textColor="@color/nevada_color"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/profile_image_view"
+        app:layout_constraintTop_toTopOf="@id/profile_image_view" />
+
+    <TextView
+        android:id="@+id/fitness_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/helvetica_regular"
+        android:text="хатга йога | 3 часа"
+        android:textColor="@color/nevada_color_80"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/profile_image_view"
+        app:layout_constraintTop_toBottomOf="@id/trainer_name_text_view" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rating_bar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        android:rating="3"
+        android:progressTint="@color/travertin_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_image_view" />
+
+    <TextView
+        android:id="@+id/trainer_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:text="online"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_travertin_rounded_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/travertin_color"
+        android:layout_marginTop="14dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/profile_image_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

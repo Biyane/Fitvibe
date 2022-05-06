@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.viewmodel
+package com.example.fitvibe.main.presentation.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 

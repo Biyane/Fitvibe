@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.view
+package com.example.fitvibe.main.presentation.main.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,12 +27,8 @@ class MainContainerFragment : Fragment() {
         childFragmentManager.commit {
             setReorderingAllowed(true)
             replace<MainFragment>(R.id.fragment_main_container)
-            addToBackStack(TAG)
+            addToBackStack(MainFragment.TAG)
         }
-    }
-
-    companion object {
-        private const val TAG = "main_container_fragment"
     }
 
 }

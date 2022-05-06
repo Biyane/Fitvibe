@@ -4,6 +4,6 @@
     android:id="@+id/fragment_main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.presentation.view.MainContainerFragment">
+    tools:context=".main.presentation.main.view.MainContainerFragment">
 
 </androidx.fragment.app.FragmentContainerView>

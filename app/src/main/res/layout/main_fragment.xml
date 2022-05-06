@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.presentation.view.MainFragment">
+    tools:context=".main.presentation.main.view.MainFragment">
 
     <include
         android:id="@+id/header_section_view"
@@ -46,7 +46,7 @@
         android:layout_marginStart="24dp"
         android:fontFamily="@font/oswald_regular"
         android:text="Популярное"
-        android:textColor="@color/travertin_path_color"
+        android:textColor="@color/travertin_color"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fitness_recycler_view" />

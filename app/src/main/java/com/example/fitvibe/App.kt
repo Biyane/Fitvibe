@@ -15,7 +15,6 @@ class App : Application() {
             androidContext(this@App)
             modules(allModules)
         }
-        val hm = HashMap<String, Int>()
         Timber.plant(TimberTree())
     }
 

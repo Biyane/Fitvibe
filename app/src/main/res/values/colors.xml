@@ -10,6 +10,7 @@
 
     //colors
     <color name="nevada_color">#586D6E</color>
+    <color name="nevada_color_80">#CC586D6E</color>
     <color name="white_10_color">#1AFFFFFF</color>
     <color name="gray_50_color">#80C4C4C4</color>
     <color name="gray_30_color">#4DC4C4C4</color>
@@ -17,7 +18,7 @@
     <color name="gun_powder_color_70">#B33D3D4F</color>
     <color name="gray_77_color">#C4C4C4</color>
     <color name="transparent">#00ffffff</color>
-    <color name="travertin_path_color">#B6AA91</color>
+    <color name="travertin_color">#B6AA91</color>
     <color name="amber_color">#F6C000</color>
     <color name="black_50">#80000000</color>
 </resources>

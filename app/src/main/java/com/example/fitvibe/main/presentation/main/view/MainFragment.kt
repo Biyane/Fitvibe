@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.view
+package com.example.fitvibe.main.presentation.main.view
 
 import android.content.SharedPreferences
 import android.graphics.Bitmap
@@ -9,12 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
+import com.example.fitvibe.R
 import com.example.fitvibe.databinding.MainFragmentBinding
-import com.example.fitvibe.main.presentation.adapter.FitnessListAdapter
+import com.example.fitvibe.main.presentation.main.adapter.FitnessClickListener
+import com.example.fitvibe.main.presentation.main.adapter.FitnessListAdapter
+import com.example.fitvibe.main.presentation.trainers.view.MainTrainersFragment
 import com.example.fitvibe.profile.presentation.view.ProfileEditFragment
 import org.koin.android.ext.android.inject
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), FitnessClickListener {
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -34,8 +39,18 @@ class MainFragment : Fragment() {
         initViews()
     }
 
+
+    override fun onFitnessClick(fitnessValue: String) {
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<MainTrainersFragment>(R.id.fragment_main_container, MainTrainersFragment.TAG)
+            addToBackStack(MainTrainersFragment.TAG)
+        }
+    }
+
+
     private fun initViews() {
-        val adapter = FitnessListAdapter()
+        val adapter = FitnessListAdapter(this)
         with (binding) {
             fitnessRecyclerView.adapter = adapter
             val encodedImage = sharedPref.getString(ProfileEditFragment.PROFILE_PHOTO_CODE_KEY, null)
@@ -57,5 +72,9 @@ class MainFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAG = "main_fragment"
     }
 }

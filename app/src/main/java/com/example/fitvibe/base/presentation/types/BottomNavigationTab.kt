@@ -2,7 +2,7 @@ package com.example.fitvibe.base.presentation.types
 
 import androidx.fragment.app.Fragment
 import com.example.fitvibe.calendar.presentation.view.CalendarFragment
-import com.example.fitvibe.main.presentation.view.MainContainerFragment
+import com.example.fitvibe.main.presentation.main.view.MainContainerFragment
 import com.example.fitvibe.profile.presentation.view.ProfileContainerFragment
 import com.example.fitvibe.search.presentation.view.SearchFragment
 
