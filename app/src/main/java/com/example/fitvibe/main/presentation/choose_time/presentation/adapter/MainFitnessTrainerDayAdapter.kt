@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.trainer.presentation.adapter
+package com.example.fitvibe.main.presentation.choose_time.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

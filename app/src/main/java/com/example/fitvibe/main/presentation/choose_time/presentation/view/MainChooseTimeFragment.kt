@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.trainer.presentation.view
+package com.example.fitvibe.main.presentation.choose_time.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
-import com.example.fitvibe.R
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fitvibe.databinding.FragmentMainFitnessTrainerBinding
-import com.example.fitvibe.main.presentation.trainer.data.dayList
-import com.example.fitvibe.main.presentation.trainer.data.timeList
-import com.example.fitvibe.main.presentation.trainer.presentation.adapter.FitnessTrainerDayListener
-import com.example.fitvibe.main.presentation.trainer.presentation.adapter.FitnessTrainerTimeListener
-import com.example.fitvibe.main.presentation.trainer.presentation.adapter.MainFitnessTrainerDayAdapter
-import com.example.fitvibe.main.presentation.trainer.presentation.adapter.MainFitnessTrainerTimeAdapter
+import com.example.fitvibe.main.presentation.choose_time.data.dayList
+import com.example.fitvibe.main.presentation.choose_time.data.timeList
+import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.FitnessTrainerDayListener
+import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.FitnessTrainerTimeListener
+import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.MainFitnessTrainerDayAdapter
+import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.MainFitnessTrainerTimeAdapter
 
-class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
+class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
     FitnessTrainerTimeListener {
 
     private var _binding: FragmentMainFitnessTrainerBinding? = null
@@ -46,11 +44,11 @@ class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
     }
 
     override fun onDayClick(value: String) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onTimeClick(value: String) {
-        TODO("Not yet implemented")
+
     }
 
     private fun initToolbar() {
@@ -65,29 +63,27 @@ class MainFitnessTrainerFragment : Fragment(), FitnessTrainerDayListener,
 
     private fun initAdapters() {
         val dayAdapter = MainFitnessTrainerDayAdapter(this)
-        dayAdapter.setList(dayList)
         binding.dayRecyclerView.adapter = dayAdapter
+        dayAdapter.setList(dayList)
 
         val timeAdapter = MainFitnessTrainerTimeAdapter(this)
-        timeAdapter.setList(timeList)
         binding.timeRecyclerView.adapter = timeAdapter
+        binding.timeRecyclerView.layoutManager = GridLayoutManager(context, 5)
+        timeAdapter.setList(timeList)
     }
 
 
     private fun initListeners() {
-        binding.imageContainerConstraint.setOnClickListener {
-            parentFragmentManager.commit {
-                setReorderingAllowed(true)
-                replace<MainFitnessTrainerDescriptionFragment>(
-                    R.id.fragment_main_container,
-                    MainFitnessTrainerDescriptionFragment.TAG
-                )
-                addToBackStack(MainFitnessTrainerDescriptionFragment.TAG)
-            }
-        }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             parentFragmentManager.popBackStack()
         }
+        binding.enrollButton.setOnClickListener {
+            showAlertDialog()
+        }
+    }
+
+    private fun showAlertDialog() {
+        SuccessEnrollFragment().show(childFragmentManager, SuccessEnrollFragment.TAG)
     }
 
     companion object {

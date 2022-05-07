@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFirstEntrance() {
-        binding.bottomNav.selectedItemId = R.id.profile
+        binding.bottomNav.selectedItemId = R.id.main
     }
 
     private fun onTabSelected(tab: BottomNavigationTab) {

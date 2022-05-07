@@ -21,4 +21,6 @@
     <color name="travertin_color">#B6AA91</color>
     <color name="amber_color">#F6C000</color>
     <color name="black_50">#80000000</color>
+    <color name="nevada_color_50">#80586D6E</color>
+    <color name="nevada_color_15">#26586D6E</color>
 </resources>

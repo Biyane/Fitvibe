@@ -15,7 +15,7 @@ import com.example.fitvibe.R
 import com.example.fitvibe.databinding.MainFragmentBinding
 import com.example.fitvibe.main.presentation.main.adapter.FitnessClickListener
 import com.example.fitvibe.main.presentation.main.adapter.FitnessListAdapter
-import com.example.fitvibe.main.presentation.trainers.view.MainTrainersFragment
+import com.example.fitvibe.main.presentation.trainers_list.view.MainTrainersListFragment
 import com.example.fitvibe.profile.presentation.view.ProfileEditFragment
 import org.koin.android.ext.android.inject
 
@@ -43,8 +43,8 @@ class MainFragment : Fragment(), FitnessClickListener {
     override fun onFitnessClick(fitnessValue: String) {
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<MainTrainersFragment>(R.id.fragment_main_container, MainTrainersFragment.TAG)
-            addToBackStack(MainTrainersFragment.TAG)
+            replace<MainTrainersListFragment>(R.id.fragment_main_container, MainTrainersListFragment.TAG)
+            addToBackStack(MainTrainersListFragment.TAG)
         }
     }
 
