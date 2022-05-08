@@ -25,6 +25,7 @@
     <string name="profile_fragment_support_service_text">Служба поддержки</string>
     <string name="profile_fragment_about_us_text">О нас</string>
     <string name="profile_fragment_leave_account">Выйти из аккаунта</string>
+
     //profileEdit
     <string name="profile_edit_fragment_change_photo_text">Сменить фото</string>
     <string name="profile_edit_fragment_name_text">Имя</string>
@@ -36,8 +37,10 @@
     <string name="profile_edit_fragment_male_text">Мужской</string>
     <string name="profile_edit_fragment_save_data_text">Сохранить данные</string>
     <string name="profile_edit_fragment_profile_image_content">profile image content</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //profile bonus
+    <string name="profile_bonus_fragment_bonus_title">Накопительная система бонусов</string>
+    <string name="profile_bonus_fragment_bonus_text">С нашей системой вы можете накапливать бонусы за каждую 5-ую тренировку, а потом их поменять на тренировку.</string>
 
     // main pages
     <string name="dialog_main_enroll_train_success_description">Тренировка успешно добавлено в ваше расписание, чтобы посмотреть расписание, нажмите на кнопку ниже</string>

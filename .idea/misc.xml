@@ -14,7 +14,10 @@
         <entry key="app/src/main/res/drawable/bg_gray_rounded_10_stroke.xml" value="0.1985" />
         <entry key="app/src/main/res/drawable/bg_green_rounded_30.xml" value="0.1985" />
         <entry key="app/src/main/res/drawable/bg_green_rounded_border_1_white.xml" value="0.1985" />
+        <entry key="app/src/main/res/drawable/bg_nevada_10_rounded_10.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/bg_nevada_rounded_10.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_rounded_white_10.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_selector_schedule.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_transperent_rounded_20.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/bg_travertin_rounded_10.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/bg_white_10_rounded_border_1_white.xml" value="0.1985" />
@@ -34,6 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_main_fitness_trainer.xml" value="0.3038494873046875" />
         <entry key="app/src/main/res/layout/fragment_main_fitness_trainer_description.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_main_trainers.xml" value="0.24259259259259258" />
+        <entry key="app/src/main/res/layout/fragment_profile_bonus.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_fitness_list.xml" value="0.5141700404858299" />
         <entry key="app/src/main/res/layout/item_main_fitness_trainer_day.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_main_fitness_trainer_time.xml" value="0.5157099405924479" />
@@ -44,6 +48,7 @@
         <entry key="app/src/main/res/layout/profile_edit_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/registration_sms_fragment.xml" value="0.3194444444444444" />
+        <entry key="app/src/main/res/layout/search_fragment.xml" value="0.29529825846354163" />
         <entry key="app/src/main/res/layout/sms_code_fragment.xml" value="0.3765625" />
       </map>
     </option>

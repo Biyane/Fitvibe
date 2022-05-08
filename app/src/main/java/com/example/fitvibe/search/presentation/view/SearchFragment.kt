@@ -1,38 +1,33 @@
 package com.example.fitvibe.search.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.fitvibe.R
+import com.example.fitvibe.databinding.SearchFragmentBinding
 
 class SearchFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
+    private var _binding: SearchFragmentBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.search_fragment, container, false)
+        _binding = SearchFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("hello", "SearchFragmentDestroyed")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
-
 }

@@ -2,7 +2,9 @@ package com.example.fitvibe.main.presentation.choose_time.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ItemMainFitnessTrainerTimeBinding
 
 class MainFitnessTrainerTimeAdapter(
@@ -10,6 +12,7 @@ class MainFitnessTrainerTimeAdapter(
 ) : RecyclerView.Adapter<MainFitnessTrainerTimeAdapter.FitnessTrainerTimeViewHolder>() {
 
     private var timeList = listOf<String>()
+    private var selectedPosition = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FitnessTrainerTimeViewHolder {
         return FitnessTrainerTimeViewHolder(
@@ -18,7 +21,7 @@ class MainFitnessTrainerTimeAdapter(
     }
 
     override fun onBindViewHolder(holder: FitnessTrainerTimeViewHolder, position: Int) {
-        holder.bind(timeList[position])
+        holder.bind(timeList[position], selectedPosition == position)
     }
 
     override fun getItemCount(): Int = timeList.size
@@ -30,17 +33,33 @@ class MainFitnessTrainerTimeAdapter(
     inner class FitnessTrainerTimeViewHolder(
         private val binding: ItemMainFitnessTrainerTimeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            initListener()
-        }
 
-        fun bind(value: String) {
+        fun bind(value: String, isSelected: Boolean) {
             binding.timeTextView.text = value
+            initListener()
+            initBackground(isSelected)
         }
 
         private fun initListener() {
             itemView.setOnClickListener {
                 listener.onTimeClick(binding.timeTextView.text.toString())
+                notifyItemChanged(selectedPosition)
+                selectedPosition = adapterPosition
+                notifyItemChanged(adapterPosition)
+            }
+        }
+
+        private fun initBackground(isSelected: Boolean) {
+            if (isSelected) {
+                itemView.background = ContextCompat.getDrawable(
+                    itemView.context, R.drawable.bg_nevada_rounded_5
+                )
+                binding.timeTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.white))
+            } else {
+                itemView.background = ContextCompat.getDrawable(
+                    itemView.context, R.drawable.bg_white_rounded_border_nevada_1
+                )
+                binding.timeTextView.setTextColor(ContextCompat.getColor(itemView.context, R.color.nevada_color))
             }
         }
     }
