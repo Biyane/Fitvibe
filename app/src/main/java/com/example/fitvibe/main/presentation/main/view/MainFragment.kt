@@ -17,6 +17,7 @@ import com.example.fitvibe.main.presentation.main.adapter.FitnessClickListener
 import com.example.fitvibe.main.presentation.main.adapter.FitnessListAdapter
 import com.example.fitvibe.main.presentation.trainers_list.view.MainTrainersListFragment
 import com.example.fitvibe.profile.presentation.view.ProfileEditFragment
+import com.example.fitvibe.utils.fitnessList
 import org.koin.android.ext.android.inject
 
 class MainFragment : Fragment(), FitnessClickListener {
@@ -51,6 +52,7 @@ class MainFragment : Fragment(), FitnessClickListener {
 
     private fun initViews() {
         val adapter = FitnessListAdapter(this)
+        adapter.setList(fitnessList)
         with (binding) {
             fitnessRecyclerView.adapter = adapter
             val encodedImage = sharedPref.getString(ProfileEditFragment.PROFILE_PHOTO_CODE_KEY, null)

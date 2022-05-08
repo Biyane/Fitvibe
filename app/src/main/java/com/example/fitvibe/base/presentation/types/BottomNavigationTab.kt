@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import com.example.fitvibe.calendar.presentation.view.CalendarFragment
 import com.example.fitvibe.main.presentation.main.view.MainContainerFragment
 import com.example.fitvibe.profile.presentation.view.ProfileContainerFragment
-import com.example.fitvibe.search.presentation.view.SearchFragment
+import com.example.fitvibe.search.presentation.view.SearchContainerFragment
 
 sealed class BottomNavigationTab {
 
@@ -24,7 +24,7 @@ sealed class BottomNavigationTab {
 
         override fun getTag(): String  = SEARCH_TAG
 
-        override fun getFragment(): Fragment = SearchFragment()
+        override fun getFragment(): Fragment = SearchContainerFragment()
 
 
     }

@@ -13,6 +13,7 @@ import com.example.fitvibe.databinding.FragmentMainTrainersBinding
 import com.example.fitvibe.main.presentation.choose_time.presentation.view.MainChooseTimeFragment
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersAdapter
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersListener
+import com.example.fitvibe.utils.trainersList
 
 
 class MainTrainersListFragment : Fragment(), MainTrainersListener {
@@ -49,7 +50,9 @@ class MainTrainersListFragment : Fragment(), MainTrainersListener {
     }
 
     private fun initAdapter() {
-        binding.trainersListRecyclerView.adapter = MainTrainersAdapter(this)
+        binding.trainersListRecyclerView.adapter = MainTrainersAdapter(this).apply {
+            setList(trainersList)
+        }
     }
 
     private fun initToolbar() {

@@ -28,6 +28,7 @@
         android:text="Тренер 1"
         android:textColor="@color/nevada_color"
         android:textSize="20sp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="@id/profile_image_view"
         app:layout_constraintStart_toEndOf="@id/profile_image_view"
         app:layout_constraintTop_toTopOf="@id/profile_image_view"
