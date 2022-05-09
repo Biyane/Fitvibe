@@ -1,13 +1,12 @@
 package com.example.fitvibe.registration.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.RegistrationSmsFragmentBinding
-import com.example.fitvibe.registration.presentation.viewmodel.RegistrationSmsViewModel
 import com.example.fitvibe.utils.phonemask.PhoneMaskDelegate
 import com.example.fitvibe.utils.phonemask.PhoneMaskDelegateImpl
 
@@ -15,7 +14,6 @@ import com.example.fitvibe.utils.phonemask.PhoneMaskDelegateImpl
 class RegistrationSmsFragment : Fragment(),
     PhoneMaskDelegate by PhoneMaskDelegateImpl() {
 
-    private lateinit var viewModel: RegistrationSmsViewModel
 
     private var _binding: RegistrationSmsFragmentBinding? = null
     private val binding get() = _binding!!

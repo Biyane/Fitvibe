@@ -1,5 +1,6 @@
 package com.example.fitvibe.registration.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitvibe.registration.utils.TimerDelegate
@@ -7,7 +8,8 @@ import com.example.fitvibe.registration.utils.TimerDelegateImpl
 
 class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
 
-    private val tickLiveData: MutableLiveData<Int> = MutableLiveData(120)
+    private val _tickLiveData: MutableLiveData<Int> = MutableLiveData(60)
+    val tickLiveData: LiveData<Int> = _tickLiveData
 
     private var _tickStringLiveData: MutableLiveData<String> = MutableLiveData()
     val tickStringLiveData get() = _tickStringLiveData
@@ -17,7 +19,7 @@ class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
 
     init {
         startTimer(
-            time = tickLiveData.value!!,
+            time = _tickLiveData.value!!,
             delay = ONE_SECONDS_IN_MILLIS,
             onTick = { tick ->
                 handleTick(tick)
@@ -36,7 +38,7 @@ class SmsCodeViewModel : ViewModel(), TimerDelegate by TimerDelegateImpl() {
     }
 
     private fun handleTick(tick: Int) {
-        tickLiveData.value = tick
+        _tickLiveData.value = tick
         updateTickString(tick)
     }
 

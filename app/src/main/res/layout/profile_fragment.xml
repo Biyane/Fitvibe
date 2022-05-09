@@ -19,6 +19,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="32dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circleImageViewRounded" />
@@ -94,15 +95,15 @@
         android:background="@color/nevada_color_15" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/history_text_view"
+        android:id="@+id/favourites_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_training_history"
+        android:drawableStart="@drawable/ic_favourite_unselected"
         android:drawablePadding="12dp"
         android:fontFamily="@font/helvetica_light"
-        android:text="@string/profile_fragment_train_history"
+        android:text="@string/profile_fragment_favourites"
         android:textColor="@color/gun_powder_color"
         android:textSize="18sp"
         app:drawableTint="@color/gun_powder_color" />

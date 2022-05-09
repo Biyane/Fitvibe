@@ -1,4 +1,4 @@
-package com.example.fitvibe.main.presentation.trainers_list.view
+package com.example.fitvibe.profile.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,39 +9,31 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.fitvibe.R
-import com.example.fitvibe.databinding.FragmentMainTrainersBinding
+import com.example.fitvibe.databinding.FragmentProfileFavouritesBinding
 import com.example.fitvibe.main.presentation.choose_time.presentation.view.MainChooseTimeFragment
-import com.example.fitvibe.main.presentation.main.view.MainFragment
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersAdapter
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersListener
+import com.example.fitvibe.main.presentation.trainers_list.view.MainTrainersListFragment
 import com.example.fitvibe.utils.Trainer
 import com.example.fitvibe.utils.trainersList
 
+class ProfileFavouritesFragment : Fragment(), MainTrainersListener {
 
-class MainTrainersListFragment : Fragment(), MainTrainersListener {
-
-    private var _binding: FragmentMainTrainersBinding? = null
+    private var _binding: FragmentProfileFavouritesBinding? = null
     private val binding get() = _binding!!
-    private var fitnessName: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        fitnessName = arguments?.getString(MainFragment.KEY)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMainTrainersBinding.inflate(layoutInflater)
+    ): View? {
+        _binding = FragmentProfileFavouritesBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        initToolbar()
-        initListener()
+        initListeners()
     }
 
     override fun onDestroyView() {
@@ -52,35 +44,30 @@ class MainTrainersListFragment : Fragment(), MainTrainersListener {
     override fun onClick(trainer: Trainer) {
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            val bundle = Bundle().apply {
-                putParcelable(TRAINER, trainer)
-            }
-            replace<MainChooseTimeFragment>(R.id.fragment_main_container, MainChooseTimeFragment.TAG, bundle)
+            val bundle = Bundle().apply { putParcelable(MainTrainersListFragment.TRAINER, trainer) }
+            replace<MainChooseTimeFragment>(R.id.container, MainChooseTimeFragment.TAG, bundle)
             addToBackStack(MainChooseTimeFragment.TAG)
         }
     }
 
     private fun initAdapter() {
-        if (fitnessName == null) return
-        binding.trainersListRecyclerView.adapter = MainTrainersAdapter(this).apply {
-            setList(trainersList.filter { it.profession.contains(fitnessName!!, true)  })
-        }
+        val adapter = MainTrainersAdapter(this)
+        binding.favouritesRecyclerView.adapter = adapter
+        adapter.setList(trainersList.filter { it.isFavourite })
     }
 
-    private fun initToolbar() {
+
+    private fun initListeners() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            parentFragmentManager.popBackStack()
+        }
         binding.toolbar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
     }
 
-    private fun initListener() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            parentFragmentManager.popBackStack()
-        }
-    }
-
     companion object {
-        const val TAG = "main_trainers_fragment"
-        const val TRAINER = "main_trainers_trainer"
+        const val KEY = "profile_favourites_fragment_key"
+        const val TAG = "profile_favourites_fragment"
     }
 }

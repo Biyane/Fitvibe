@@ -64,6 +64,13 @@ class ProfileFragment : Fragment() {
                 addToBackStack(ProfileBonusFragment.TAG)
             }
         }
+        binding.favouritesTextView.setOnClickListener {
+            parentFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<ProfileFavouritesFragment>(R.id.container)
+                addToBackStack(ProfileFavouritesFragment.TAG)
+            }
+        }
     }
 
     private fun initResultListener() {

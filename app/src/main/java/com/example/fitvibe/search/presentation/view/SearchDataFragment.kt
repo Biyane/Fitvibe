@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.fitvibe.databinding.FragmentSearchDataBinding
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersAdapter
 import com.example.fitvibe.main.presentation.trainers_list.adapter.MainTrainersListener
+import com.example.fitvibe.utils.Trainer
 
 class SearchDataFragment : Fragment(), MainTrainersListener {
 
@@ -30,7 +31,7 @@ class SearchDataFragment : Fragment(), MainTrainersListener {
         initListener()
     }
 
-    override fun onClick(name: String) {
+    override fun onClick(trainer: Trainer) {
 
     }
 

@@ -1,7 +1,6 @@
 package com.example.fitvibe.calendar.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,15 +17,6 @@ class CalendarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.calendar_fragment, container, false)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("hello", "CalendarFragmentDestroyed")
-    }
-
-    companion object {
-        fun newInstance() = CalendarFragment()
     }
 
 }

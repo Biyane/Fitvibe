@@ -2,13 +2,13 @@ package com.example.fitvibe.registration.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.fitvibe.base.presentation.MainActivity
 import com.example.fitvibe.R
+import com.example.fitvibe.base.presentation.MainActivity
 import com.example.fitvibe.databinding.SmsCodeFragmentBinding
 import com.example.fitvibe.registration.presentation.viewmodel.SmsCodeViewModel
 
@@ -53,6 +53,7 @@ class SmsCodeFragment : Fragment() {
 
     private fun initObservers() {
         viewModel.tickStringLiveData.observe(viewLifecycleOwner, ::handleTimerTick)
+        viewModel.tickLiveData.observe(viewLifecycleOwner, ::handleTick)
     }
 
     private fun setFakeAccessVerification() {
@@ -65,6 +66,15 @@ class SmsCodeFragment : Fragment() {
 
     private fun handleTimerTick(tick: String) {
         binding.smsTimeText.text = getString(R.string.sms_code_fragment_time_text, tick)
+    }
+
+    private fun handleTick(tick: Int) {
+        if (tick == 56) {
+            binding.smsDigit.setText("3854")
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
     }
 
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="60dp"
     tools:context=".main.presentation.trainers_list.view.MainTrainersListFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,13 +22,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trainers_list_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:itemCount="3"
         tools:listitem="@layout/item_main_trainers" />
 

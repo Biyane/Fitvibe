@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.example.fitvibe.R
 import com.example.fitvibe.databinding.FragmentMainFitnessTrainerBinding
 import com.example.fitvibe.main.presentation.choose_time.data.dayList
 import com.example.fitvibe.main.presentation.choose_time.data.timeList
@@ -14,12 +16,22 @@ import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.Fi
 import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.FitnessTrainerTimeListener
 import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.MainFitnessTrainerDayAdapter
 import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.MainFitnessTrainerTimeAdapter
+import com.example.fitvibe.main.presentation.trainers_list.view.MainTrainersListFragment
+import com.example.fitvibe.utils.Trainer
+import com.example.fitvibe.utils.trainersList
 
 class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
-    FitnessTrainerTimeListener {
+    FitnessTrainerTimeListener, EnrollButtonListener {
 
     private var _binding: FragmentMainFitnessTrainerBinding? = null
     private val binding get() = _binding!!
+
+    private var trainer: Trainer? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        trainer = arguments?.getParcelable(MainTrainersListFragment.TRAINER)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +63,10 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
 
     }
 
+    override fun onEnrollClick() {
+
+    }
+
     private fun initToolbar() {
         binding.toolbar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
@@ -58,7 +74,29 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
     }
 
     private fun initViews() {
+        if (trainer == null) return
+        with(binding) {
+            fitnessNameTextView.text = trainer?.profession
+            trainerNameTextView.text = trainer?.name
+            trainerStatusTextView.text = if (trainer?.status == true) "Онлайн" else "Оффлайн"
+            trainDurationTextView.text = trainer?.duration
+            fitnessDescription.text = trainer?.description
+            favouritesImageView.setImageResource(if (trainer?.isFavourite == true) R.drawable.ic_favourites_selected else R.drawable.ic_favourite_unselected)
+            setProfile()
+            setMainImage()
+        }
+    }
 
+    private fun setProfile() {
+        Glide.with(this)
+            .load(trainer?.image)
+            .into(binding.profileImageView)
+    }
+
+    private fun setMainImage() {
+        Glide.with(this)
+            .load(trainer?.fitnessPicture)
+            .into(binding.fitnessImageView)
     }
 
     private fun initAdapters() {
@@ -77,13 +115,22 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             parentFragmentManager.popBackStack()
         }
+
         binding.enrollButton.setOnClickListener {
             showAlertDialog()
+        }
+
+        binding.favouritesImageView.setOnClickListener {
+            trainersList[trainersList.indexOf(trainer)].isFavourite =
+                !trainersList[trainersList.indexOf(trainer)].isFavourite
+
+            binding.favouritesImageView.setImageResource(if (trainersList[trainersList.indexOf(trainer)].isFavourite) R.drawable.ic_favourites_selected else R.drawable.ic_favourite_unselected)
         }
     }
 
     private fun showAlertDialog() {
-        SuccessEnrollFragment().show(childFragmentManager, SuccessEnrollFragment.TAG)
+        val dialogFragment = SuccessEnrollFragment()
+        dialogFragment.show(childFragmentManager, SuccessEnrollFragment.TAG)
     }
 
     companion object {

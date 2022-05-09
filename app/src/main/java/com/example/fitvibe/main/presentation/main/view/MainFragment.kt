@@ -44,7 +44,10 @@ class MainFragment : Fragment(), FitnessClickListener {
     override fun onFitnessClick(fitnessValue: String) {
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<MainTrainersListFragment>(R.id.fragment_main_container, MainTrainersListFragment.TAG)
+            val bundle = Bundle().apply {
+                putString(KEY, fitnessValue)
+            }
+            replace<MainTrainersListFragment>(R.id.fragment_main_container, MainTrainersListFragment.TAG, bundle)
             addToBackStack(MainTrainersListFragment.TAG)
         }
     }
@@ -59,6 +62,8 @@ class MainFragment : Fragment(), FitnessClickListener {
                 ?: return@with
             val image = decodeImage(encodedImage)
             headerSectionView.profileImageView.setImageBitmap(image)
+            val name = sharedPref.getString(ProfileEditFragment.PROFILE_EDIT_FRAGMENT_NAME, null) ?: "Имя"
+            headerSectionView.greetingNameTextView.text = "Привет, $name"
         }
     }
 
@@ -77,6 +82,7 @@ class MainFragment : Fragment(), FitnessClickListener {
     }
 
     companion object {
+        const val KEY = "main_fragment_fitness_key"
         const val TAG = "main_fragment"
     }
 }

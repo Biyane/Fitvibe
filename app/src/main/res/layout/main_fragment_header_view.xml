@@ -25,6 +25,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_profile_photo"
         app:layout_constraintBottom_toBottomOf="@id/greeting_name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/greeting_name_text_view"

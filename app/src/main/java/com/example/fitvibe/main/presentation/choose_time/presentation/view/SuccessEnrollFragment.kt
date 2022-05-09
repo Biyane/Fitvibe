@@ -14,6 +14,8 @@ class SuccessEnrollFragment : DialogFragment() {
     private var _binding: DialogMainEnrollTrainBinding? = null
     private val binding get() = _binding!!
 
+    private var enrollButtonListener: EnrollButtonListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth)
@@ -37,12 +39,16 @@ class SuccessEnrollFragment : DialogFragment() {
         initListeners()
     }
 
+    fun setListener(listener: EnrollButtonListener) {
+        if (isAdded) enrollButtonListener = listener
+    }
+
     private fun initListeners() {
         binding.closeImageView.setOnClickListener {
             dismiss()
         }
         binding.enrollButton.setOnClickListener {
-
+            dismiss()
         }
     }
 
@@ -56,4 +62,6 @@ class SuccessEnrollFragment : DialogFragment() {
     }
 }
 
-interface EnrollButtonListener
+interface EnrollButtonListener {
+    fun onEnrollClick()
+}

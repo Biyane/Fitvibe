@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/bg_white_rounded_border_1_nevada_15">
+    android:background="@drawable/bg_white_rounded_border_1_nevada_15"
+    tools:context="main.presentation.trainers_list.adapter.MainTrainersAdapter">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image_view"

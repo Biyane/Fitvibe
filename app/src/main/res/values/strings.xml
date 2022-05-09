@@ -20,7 +20,7 @@
     <string name="profile_fragment_my_data_text">Мои данные</string>
     <string name="profile_fragment_payment_method_text">Способы оплаты</string>
     <string name="profile_fragment_my_bonus_text">Мои бонусы</string>
-    <string name="profile_fragment_train_history">История тренировок</string>
+    <string name="profile_fragment_favourites">Избаранные</string>
     <string name="profile_fragment_information_text">Информация</string>
     <string name="profile_fragment_support_service_text">Служба поддержки</string>
     <string name="profile_fragment_about_us_text">О нас</string>

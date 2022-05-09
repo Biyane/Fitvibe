@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ItemMainTrainersBinding
 import com.example.fitvibe.utils.Trainer
+import com.example.fitvibe.utils.trainersList
 
 class MainTrainersAdapter(
     private val listener: MainTrainersListener
@@ -33,10 +34,6 @@ class MainTrainersAdapter(
     inner class TrainersViewHolder(
         private val binding: ItemMainTrainersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            initListener()
-        }
-
         fun bind(trainer: Trainer) {
             with (binding) {
                 setImage(trainer.image)
@@ -44,7 +41,13 @@ class MainTrainersAdapter(
                 fitnessNameTextView.text = trainer.profession
                 trainerStatusTextView.text = if (trainer.status) "Онлайн" else "Оффлайн"
                 trainDurationTextView.text = trainer.duration
+                favouritesImageView.setImageResource(if (trainer.isFavourite) R.drawable.ic_favourites_selected else R.drawable.ic_favourite_unselected)
+                favouritesImageView.setOnClickListener {
+                    trainersList[trainersList.indexOf(trainer)].isFavourite = !trainersList[trainersList.indexOf(trainer)].isFavourite
+                    notifyItemChanged(adapterPosition)
+                }
             }
+            initListener(trainer)
         }
 
         private fun setImage(url: String) {
@@ -54,15 +57,15 @@ class MainTrainersAdapter(
                 .into(binding.profileImageView)
         }
 
-        private fun initListener() {
+        private fun initListener(trainer: Trainer) {
             itemView.setOnClickListener {
-                listener.onClick(binding.fitnessNameTextView.text.toString())
+                listener.onClick(trainer)
             }
         }
     }
 }
 
 interface MainTrainersListener {
-    fun onClick(name: String)
+    fun onClick(trainer: Trainer)
 }
 
