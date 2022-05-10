@@ -1,7 +1,10 @@
 package com.example.fitvibe.utils
 
 import android.os.Parcelable
+import com.example.fitvibe.calendar.presentation.view.Day
+import com.example.fitvibe.main.presentation.choose_time.presentation.view.CalendarData
 import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Parcelize
 data class Trainer(
@@ -54,3 +57,36 @@ val fitnessList = listOf<Fitness>(
     Fitness("Медитация", "https://img.championat.com/news/big/n/f/kak-pravilno-meditirovat-sovety-praktika_157684379279536979.jpg"),
 
 )
+
+fun getDaysList(): List<Day> {
+    val daysList = mutableListOf<Day>()
+    for (i in 0..6) {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, i)
+        daysList.add(Day(day = getDayOfTheWeek(calendar.get(Calendar.DAY_OF_WEEK)), time = calendar.get(Calendar.DAY_OF_MONTH).toString()))
+    }
+    return daysList.toList()
+}
+
+fun getDayOfTheWeek(day: Int): String = when (day) {
+    Calendar.SUNDAY -> "Вс"
+    Calendar.MONDAY -> "Пн"
+    Calendar.TUESDAY -> "Вт"
+    Calendar.WEDNESDAY -> "Ср"
+    Calendar.THURSDAY -> "Чт"
+    Calendar.FRIDAY -> "Пт"
+    else -> "Сб"
+}
+
+fun getFullDayOfTheWeek(day: Int): String = when (day) {
+    Calendar.SUNDAY -> "Воскресенье"
+    Calendar.MONDAY -> "Понеедльник"
+    Calendar.TUESDAY -> "Вторник"
+    Calendar.WEDNESDAY -> "Среда"
+    Calendar.THURSDAY -> "Четверг"
+    Calendar.FRIDAY -> "Пятница"
+    else -> "Суббота"
+}
+
+val calendarHm: HashMap<String, MutableList<CalendarData>> = hashMapOf()
+

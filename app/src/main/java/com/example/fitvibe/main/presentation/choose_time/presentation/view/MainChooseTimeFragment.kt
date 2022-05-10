@@ -18,15 +18,19 @@ import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.Ma
 import com.example.fitvibe.main.presentation.choose_time.presentation.adapter.MainFitnessTrainerTimeAdapter
 import com.example.fitvibe.main.presentation.trainers_list.view.MainTrainersListFragment
 import com.example.fitvibe.utils.Trainer
+import com.example.fitvibe.utils.calendarHm
 import com.example.fitvibe.utils.trainersList
 
 class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
-    FitnessTrainerTimeListener, EnrollButtonListener {
+    FitnessTrainerTimeListener {
 
     private var _binding: FragmentMainFitnessTrainerBinding? = null
     private val binding get() = _binding!!
 
     private var trainer: Trainer? = null
+
+    private var dayName: String = ""
+    private var timeValue: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,15 +60,11 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
     }
 
     override fun onDayClick(value: String) {
-
+        dayName = value
     }
 
     override fun onTimeClick(value: String) {
-
-    }
-
-    override fun onEnrollClick() {
-
+        timeValue = value
     }
 
     private fun initToolbar() {
@@ -117,6 +117,21 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
         }
 
         binding.enrollButton.setOnClickListener {
+            if (calendarHm[dayName] != null) {
+                calendarHm[dayName]?.add(CalendarData(
+                    trainer!!,
+                    timeValue,
+                    dayName,
+                ))
+            } else {
+                calendarHm[dayName] = mutableListOf(
+                    CalendarData(
+                        trainer!!,
+                        timeValue,
+                        dayName
+                    )
+                )
+            }
             showAlertDialog()
         }
 
@@ -124,7 +139,12 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
             trainersList[trainersList.indexOf(trainer)].isFavourite =
                 !trainersList[trainersList.indexOf(trainer)].isFavourite
 
-            binding.favouritesImageView.setImageResource(if (trainersList[trainersList.indexOf(trainer)].isFavourite) R.drawable.ic_favourites_selected else R.drawable.ic_favourite_unselected)
+            binding.favouritesImageView.setImageResource(
+                if (trainersList[trainersList.indexOf(
+                        trainer
+                    )].isFavourite
+                ) R.drawable.ic_favourites_selected else R.drawable.ic_favourite_unselected
+            )
         }
     }
 
@@ -137,3 +157,9 @@ class MainChooseTimeFragment : Fragment(), FitnessTrainerDayListener,
         const val TAG = "main_fitness_trainer_fragment"
     }
 }
+
+data class CalendarData(
+    val trainer: Trainer,
+    val timeValue: String,
+    val dayValue: String
+)

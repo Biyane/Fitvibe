@@ -38,6 +38,11 @@ class MainFitnessTrainerTimeAdapter(
             binding.timeTextView.text = value
             initListener()
             initBackground(isSelected)
+            firstEntrance(value)
+        }
+
+        private fun firstEntrance(value: String) {
+            listener.onTimeClick(value)
         }
 
         private fun initListener() {

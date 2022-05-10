@@ -15,16 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/discount_section_view"
-        layout="@layout/main_fragment_discount_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginHorizontal="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_section_view" />
+<!--    <include-->
+<!--        android:id="@+id/discount_section_view"-->
+<!--        layout="@layout/main_fragment_discount_view"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:layout_marginHorizontal="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/header_section_view" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fitness_recycler_view"
@@ -36,7 +36,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/discount_section_view"
+        app:layout_constraintTop_toBottomOf="@id/popular_text_view"
         app:spanCount="3"
         tools:listitem="@layout/item_fitness_list" />
 
@@ -45,11 +45,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/oswald_regular"
         android:text="Популярное"
         android:textColor="@color/travertin_color"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fitness_recycler_view" />
+        app:layout_constraintTop_toBottomOf="@id/header_section_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

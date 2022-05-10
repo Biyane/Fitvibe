@@ -186,8 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/helvetica_medium"
-
+                android:layout_marginHorizontal="20dp"
                 android:textColor="@color/nevada_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description_text_view" />

@@ -1,6 +1,7 @@
 package com.example.fitvibe.base.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onTabSelected(tab: BottomNavigationTab) {
+        Log.d("hello", supportFragmentManager.fragments.size.toString())
         val currentFragment: Fragment? = getCurrentFragment()
         val newFragment: Fragment? = supportFragmentManager.findFragmentByTag(tab.getTag())
         if (currentFragment == null) {
@@ -60,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 if (isSelectedTabSame(currentFragment, newFragment)) return
                 show(newFragment)
             }
-            setReorderingAllowed(true)
         }
     }
 
@@ -70,7 +71,6 @@ class MainActivity : AppCompatActivity() {
     private fun handleFirstEntry(tab: BottomNavigationTab) {
         supportFragmentManager.commitNow {
             add(R.id.fragment_container, tab.getFragment(), tab.getTag())
-            setReorderingAllowed(true)
         }
     }
 
