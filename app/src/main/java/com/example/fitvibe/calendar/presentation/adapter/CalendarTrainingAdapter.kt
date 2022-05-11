@@ -9,7 +9,9 @@ import com.example.fitvibe.R
 import com.example.fitvibe.databinding.ItemCalendarTrainingBinding
 import com.example.fitvibe.utils.Trainer
 
-class CalendarTrainingAdapter : RecyclerView.Adapter<CalendarTrainingAdapter.TrainingViewHolder>() {
+class CalendarTrainingAdapter(
+    private val listener: CalendarTrainingListener
+) : RecyclerView.Adapter<CalendarTrainingAdapter.TrainingViewHolder>() {
 
     private var dataList: List<Trainer> = mutableListOf()
     private var lastSelectedPosition = 0
@@ -50,6 +52,9 @@ class CalendarTrainingAdapter : RecyclerView.Adapter<CalendarTrainingAdapter.Tra
                 lastSelectedPosition = adapterPosition
                 notifyItemChanged(adapterPosition)
             }
+            binding.menuButton.setOnClickListener {
+                listener.onDeleteClick(trainer)
+            }
         }
 
         private fun initBackground(isSelected: Boolean) {
@@ -73,5 +78,9 @@ class CalendarTrainingAdapter : RecyclerView.Adapter<CalendarTrainingAdapter.Tra
                 .into(binding.fitnessImage)
         }
     }
+}
+
+interface CalendarTrainingListener {
+    fun onDeleteClick(trainer: Trainer)
 }
 

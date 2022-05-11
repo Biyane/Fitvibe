@@ -9,13 +9,14 @@ import com.example.fitvibe.calendar.presentation.adapter.CalendarDayAdapter
 import com.example.fitvibe.calendar.presentation.adapter.CalendarDayListener
 import com.example.fitvibe.calendar.presentation.adapter.CalendarTimeAdapter
 import com.example.fitvibe.calendar.presentation.adapter.CalendarTrainingAdapter
+import com.example.fitvibe.calendar.presentation.adapter.CalendarTrainingListener
 import com.example.fitvibe.databinding.CalendarFragmentBinding
 import com.example.fitvibe.utils.Trainer
 import com.example.fitvibe.utils.calendarHm
 import com.example.fitvibe.utils.getFullDayOfTheWeek
 import java.util.*
 
-class CalendarFragment : Fragment(), CalendarDayListener {
+class CalendarFragment : Fragment(), CalendarDayListener, CalendarTrainingListener {
 
     private var _binding: CalendarFragmentBinding? = null
     private val binding get() = _binding!!
@@ -24,6 +25,7 @@ class CalendarFragment : Fragment(), CalendarDayListener {
     private val trainerList: MutableList<Trainer> = mutableListOf()
     private var timeAdapter: CalendarTimeAdapter? = null
     private var trainerAdapter: CalendarTrainingAdapter? = null
+    private val hm: HashMap<Trainer, String> = hashMapOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,20 +46,27 @@ class CalendarFragment : Fragment(), CalendarDayListener {
     }
 
     override fun onDayClick(day: Day) {
-        val newList = mutableListOf<Trainer>()
-        val newTimeList = mutableListOf<String>()
         val data = calendarHm[day.day]
         if (data.isNullOrEmpty()) {
             timeList.clear()
             trainerList.clear()
         } else {
             for (d in data) {
-                if (timeList.add(d.timeValue)) trainerList.add(d.trainer)
-
+                if (timeList.add(d.timeValue)) {
+                    trainerList.add(d.trainer)
+                    hm[d.trainer] = d.timeValue
+                }
             }
         }
         updateLeftRecycler()
         updateRightRecycle()
+    }
+
+    override fun onDeleteClick(trainer: Trainer) {
+        trainerList.remove(trainer)
+        timeList.remove(hm[trainer])
+        trainerAdapter?.setList(trainerList)
+        timeAdapter?.setList(timeList.toList())
     }
 
     private fun updateRightRecycle() {
@@ -95,7 +104,7 @@ class CalendarFragment : Fragment(), CalendarDayListener {
     }
 
     private fun initMainRecycler() {
-        trainerAdapter = CalendarTrainingAdapter()
+        trainerAdapter = CalendarTrainingAdapter(this)
         binding.trainingRecyclerView.adapter = trainerAdapter
     }
 

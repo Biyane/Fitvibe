@@ -44,8 +44,9 @@
 
     // main pages
     <string name="dialog_main_enroll_train_success_description">Тренировка успешно добавлено в ваше расписание, чтобы посмотреть расписание, нажмите на кнопку ниже</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="fragment_main_fitness_trainer_location">Локация: Ул.  Назарбаева 223</string>
+    <string name="fragment_main_fitness_trainer_phone">Номер телефона:  8 777 707 77 77</string>
 
 
 </resources>

@@ -169,6 +169,52 @@
                 app:layout_constraintTop_toBottomOf="@id/fitness_name_container_linear_layout" />
 
             <TextView
+                android:id="@+id/location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/second_divider"
+                android:textColor="@color/travertin_color"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/fragment_main_fitness_trainer_location"/>
+
+            <View
+                android:id="@+id/third_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/nevada_color_15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location" />
+
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/third_divider"
+                android:textColor="@color/travertin_color"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/fragment_main_fitness_trainer_phone"/>
+
+            <View
+                android:id="@+id/fourth_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/nevada_color_15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone_number" />
+
+            <TextView
                 android:id="@+id/description_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,7 +225,7 @@
                 android:textColor="@color/nevada_color_50"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/second_divider" />
+                app:layout_constraintTop_toBottomOf="@id/fourth_divider" />
 
             <TextView
                 android:id="@+id/fitness_description"
