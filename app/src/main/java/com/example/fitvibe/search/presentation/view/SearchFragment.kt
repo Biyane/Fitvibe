@@ -13,6 +13,7 @@ import com.example.fitvibe.databinding.SearchFragmentBinding
 import com.example.fitvibe.search.data.searchList
 import com.example.fitvibe.search.presentation.adapter.OnSearchListener
 import com.example.fitvibe.search.presentation.adapter.SearchAdapter
+import com.example.fitvibe.utils.trainersList
 
 class SearchFragment : Fragment(), OnSearchListener {
 
@@ -42,9 +43,13 @@ class SearchFragment : Fragment(), OnSearchListener {
     }
 
     override fun onSearchClick(value: String) {
+        val dataList = ArrayList(trainersList.filter { it.name == value || it.profession == value })
+        val bundle = Bundle().apply {
+            putParcelableArrayList(KEY, dataList)
+        }
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<SearchDataFragment>(R.id.search_container, SearchDataFragment.TAG)
+            replace<SearchDataFragment>(R.id.search_container, SearchDataFragment.TAG, bundle)
             addToBackStack(SearchDataFragment.TAG)
         }
     }
@@ -71,5 +76,6 @@ class SearchFragment : Fragment(), OnSearchListener {
 
     companion object {
         const val TAG = "search_fragment"
+        const val KEY = "search_fragment_key"
     }
 }

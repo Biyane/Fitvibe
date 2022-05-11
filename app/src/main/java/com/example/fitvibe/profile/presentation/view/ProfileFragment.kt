@@ -1,5 +1,6 @@
 package com.example.fitvibe.profile.presentation.view
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -13,7 +14,10 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.fragment.app.setFragmentResultListener
 import com.example.fitvibe.R
+import com.example.fitvibe.base.presentation.MainActivity
 import com.example.fitvibe.databinding.ProfileFragmentBinding
+import com.example.fitvibe.launch.presentation.LaunchActivity
+import com.example.fitvibe.registration.presentation.SmsCodeFragment
 import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment() {
@@ -70,6 +74,12 @@ class ProfileFragment : Fragment() {
                 replace<ProfileFavouritesFragment>(R.id.container)
                 addToBackStack(ProfileFavouritesFragment.TAG)
             }
+        }
+        binding.logOutTextView.setOnClickListener {
+            sharedPref.edit().remove(SmsCodeFragment.AUTH_KEY).apply()
+            val intent = Intent(context, LaunchActivity::class.java)
+            startActivity(intent)
+            (requireActivity() as MainActivity).finish()
         }
     }
 
